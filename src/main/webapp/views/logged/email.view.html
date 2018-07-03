@@ -1,0 +1,145 @@
+<h3></h3> 
+<!-- div row para pesquisa --> 
+<!--<div class="row">--> 
+<div ng-hide="Email.inserting || Email.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general" class=""> 
+  <div class="form-group"> 
+    <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label> 
+    <input type="text" ng-model="vars.search" cronapp-filter="destinatario;" cronapp-filter-operator="" cronapp-filter-caseinsensitive="false" cronapp-filter-autopost="true" crn-datasource="Email" class="form-control" value="" placeholder="{{'template.crud.search' | translate}}"> 
+  </div> 
+</div> 
+<div data-component="crn-button" id="crn-button-564202" class=""> 
+  <button class="btn btn-primary" type="submit" onclick="" data-component="crn-button" ng-click="Email.startInserting()" ng-hide="Email.inserting || Email.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button> 
+</div> 
+<!-- fim div row para pesquisa --> 
+<!--</div>--> 
+<datasource filter="" name="Email" entity="api/cronapi/crud/app.entity.Email" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource> 
+<fieldset style="background-color:powderblue" ng-hide="Email.inserting || Email.editing"> 
+  <br> 
+  <p style="color:red" class="component-holder text-center" xattr-position="text-center" data-component="crn-text" id="crn-text-411781">Grade Customizada para Renderizar HTML (O Conteúdo gerado pelo novo "Editor de Texto Rico")</p> 
+  <p style="color:red" class="component-holder text-center" xattr-position="text-center" data-component="crn-text" id="crn-text-112805">Para tal basta conferir a configuração aplicada no campo "Vincular HTML" nas propriedades da Grade</p> 
+</fieldset>
+<br> 
+<div class="component-holder" data-component="crn-grid" id="crn-grid-Email"> 
+  <div crn-datasource="Email" class="" ng-hide="Email.editing || Email.inserting"> 
+    <table class="table  table-bordered table-hover table-striped"> 
+      <thead> 
+        <tr class="table-header"> 
+          <th class=""> 
+            <div class="">
+               {{'Destinatario' | translate}} 
+            </div> </th> 
+          <th class=""> 
+            <div class="">
+               Conteudo 01 
+            </div> </th> 
+          <th class=""> 
+            <div class="">
+               Conteudo 02 
+            </div> </th> 
+          <th class=""> 
+            <div class="">
+               Conteudo 03 
+            </div> </th> 
+          <th class=""> 
+            <div class="">
+               {{"template.crud.actions" | translate}} 
+            </div> </th> 
+        </tr> 
+      </thead> 
+      <tbody> 
+        <tr class="table-content" ng-repeat="rowData in datasource.data"> 
+          <td class=""> 
+            <div class="">
+               {{rowData.destinatario }} 
+            </div> </td> 
+          <td class=""> 
+            <div class="" ng-bind-html="rowData.conteudo | renderHTML">
+               {{rowData.conteudo }} 
+            </div> </td> 
+          <td class=""> 
+            <div class="" ng-bind-html="rowData.conteudo_2 | renderHTML">
+               {{rowData.conteudo_2 }} 
+            </div> </td> 
+          <td class=""> 
+            <div class="" ng-bind-html="rowData.conteudo_3 | renderHTML">
+               {{rowData.conteudo_3 }} 
+            </div> </td> 
+          <td class=""> 
+            <div class=""> 
+              <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button> 
+              <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button> 
+            </div> </td> 
+        </tr> 
+      </tbody> 
+    </table> 
+    <div class="table-footer-controls"> 
+      <button class="btn btn-default btn-block btn-clicked" data-component="crn-button" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button> 
+    </div> 
+  </div> 
+</div> 
+<div data-component="crn-form" id="crn-form-form-Email"> 
+  <div class="form" ng-show="Email.editing || Email.inserting"> 
+    <form crn-datasource="Email" class=""> 
+      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting"> 
+        <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button> 
+        <button class="btn btn-success" data-component="crn-button" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button> 
+        <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button> 
+        <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button> 
+        <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button> 
+      </div> 
+      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting"> 
+        <button class="btn btn-success" data-component="crn-button" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button> 
+        <button class="btn btn-danger" data-component="crn-button" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button> 
+      </div> 
+      <br> 
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting"> 
+        <div data-component="crn-textinput" id="crn-textinput-destinatario" class=""> 
+          <div class="form-group"> 
+            <label for="textinput-destinatario" class="">Destinatario</label> 
+            <!-- else for if !model.hasCronappFramework() --> 
+            <input type="text" ng-model="Email.active.destinatario" class="form-control" id="textinput-destinatario" placeholder="Destinatario" mask="" mask-placeholder="" ng-required="false"> 
+            <!-- end if !model.hasCronappFramework() --> 
+          </div> 
+        </div> 
+        <fieldset style="background-color:powderblue"> 
+          <b><p class="text-left component-holder" xattr-position="text-left" data-component="crn-text" id="crn-text-381694">Conteudo 01: Novo Editor de Texto Rico com todas as opções habilitadas.</p></b> 
+          <div class="component-holder ng-binding ng-scope" data-component="crn-cron-rich-editor" id="crn-cron-rich-editor-552879"> 
+            <cron-rich-editor ng-model="Email.active.conteudo" options="{&quot;allowFullScreen&quot;:true,&quot;allowPage&quot;:true,&quot;allowPrint&quot;:true,&quot;allowTransferArea&quot;:true,&quot;allowDoUndo&quot;:true,&quot;allowSymbol&quot;:true,&quot;allowEmbeddedImage&quot;:true,&quot;allowFont&quot;:true,&quot;allowLinks&quot;:true,&quot;allowParagraph&quot;:true,&quot;allowFormulas&quot;:true,&quot;showMenuBar&quot;:true,&quot;showStatusBar&quot;:true,&quot;contentStyle&quot;:&quot;body { color:red }&quot;}"> 
+              <img width="100%" src="plugins/cronapp-framework-js/dist/img/cronRichEditor.png"> 
+            </cron-rich-editor> 
+          </div> 
+        </fieldset> 
+        <br> 
+        <br> 
+        <fieldset style="background-color:powderblue"> 
+          <b><p class="text-left component-holder" xattr-position="text-left" data-component="crn-text" id="crn-text-697966">Conteúdo 02: Novo Editor de Texto Rico sem a opção de Barra de Menu e com apenas as opções de impressão habilitadas.</p></b> 
+          <div class="component-holder ng-binding ng-scope" data-component="crn-cron-rich-editor" id="crn-cron-rich-editor-775330"> 
+            <cron-rich-editor ng-model="Email.active.conteudo_2" options="{&quot;allowFullScreen&quot;:false,&quot;allowPage&quot;:false,&quot;allowPrint&quot;:true,&quot;allowTransferArea&quot;:false,&quot;allowDoUndo&quot;:false,&quot;allowSymbol&quot;:false,&quot;allowEmbeddedImage&quot;:false,&quot;allowFont&quot;:false,&quot;allowLinks&quot;:false,&quot;allowParagraph&quot;:false,&quot;allowFormulas&quot;:false,&quot;showMenuBar&quot;:false,&quot;showStatusBar&quot;:true,&quot;contentStyle&quot;:&quot;body { color:red; font-size:22px }&quot;}"> 
+              <img width="100%" src="plugins/cronapp-framework-js/dist/img/cronRichEditor.png"> 
+            </cron-rich-editor> 
+          </div> 
+        </fieldset> 
+        <br> 
+        <br> 
+        <fieldset style="background-color:powderblue"> 
+          <b><p class="text-left component-holder" xattr-position="text-left" data-component="crn-text" id="crn-text-680727">Conteúdo 03: Novo Editor de Texto Rico sem a opção de Barra de Status e com apenas as opções de anexo de imagem e botões de área de transferência habilitados.</p></b> 
+          <div class="component-holder ng-binding ng-scope" data-component="crn-cron-rich-editor" id="crn-cron-rich-editor-198760"> 
+            <cron-rich-editor ng-model="Email.active.conteudo_3" options="{&quot;allowFullScreen&quot;:false,&quot;allowPage&quot;:false,&quot;allowPrint&quot;:false,&quot;allowTransferArea&quot;:true,&quot;allowDoUndo&quot;:false,&quot;allowSymbol&quot;:false,&quot;allowEmbeddedImage&quot;:true,&quot;allowFont&quot;:false,&quot;allowLinks&quot;:false,&quot;allowParagraph&quot;:false,&quot;allowFormulas&quot;:false,&quot;showMenuBar&quot;:true,&quot;showStatusBar&quot;:false,&quot;contentStyle&quot;:&quot;&quot;}"> 
+              <img width="100%" src="plugins/cronapp-framework-js/dist/img/cronRichEditor.png"> 
+            </cron-rich-editor> 
+          </div> 
+        </fieldset> 
+        <!-- NtoN  --> 
+        <!-- NtoN  end--> 
+      </fieldset> 
+    </form> 
+    <form> 
+      <fieldset> 
+        <!-- OneToN --> 
+        <!-- OneToOne  end --> 
+      </fieldset> 
+    </form> 
+  </div> 
+</div> 
+<!-- OneToOne modal --> 
+<!-- OneToOne modal end-->
